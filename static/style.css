@@ -1,0 +1,77 @@
+html, body {
+    background-color: black;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 2;  /* Ensure container stays above smoke */
+}
+
+/* Adjust the heading size and spacing */
+h1 {
+    font-size: 75px; /* Increased from 25px to 75px (3x size) */
+    margin: 0; /* Remove margin to prevent overflow */
+    font-family: Avenir, sans-serif;
+}
+
+/* Make text responsive for smaller screens */
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 45px;
+    }
+    .logo {
+        width: 35%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 35px;
+    }
+    .logo {
+        width: 45%;
+    }
+}
+
+/* Smoke effect */
+.smoke {
+    position: absolute;
+    background: radial-gradient(circle, rgba(200, 200, 200, 0.8) 0%, rgba(50, 50, 50, 0) 100%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: fadeUp 1.5s ease-out forwards;
+    z-index: 1;  /* Smoke appears below the container */
+}
+
+/* Animation: smoke moves up and fades out */
+@keyframes fadeUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-30px) scale(2);
+        opacity: 0;
+    }
+}
+
+/* Logo styling */
+.logo {
+    width: 25%;  /* Reduced from 50% to 25% */
+    height: auto;  /* Maintain aspect ratio */
+    margin-bottom: 20px;
+}
